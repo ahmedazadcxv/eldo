@@ -1,0 +1,12 @@
+ 
+
+    <ul class="nav nav-tabs row" style="width: 312px;">
+  
+        <div class="  badge badge-danger" style="font-size: 22px; width: 100%;">الأكثر قراءة</div>
+        {% for post in l_posts %}  
+       
+        <div class="col-md-5 mt-2"><img class="bg-light  shadow-lg" src="{{post.image.url}}" width="100px" height="60px"></div>
+        <div class="col-md-7 mt-2 bg-light "><a class="nav-link" href="/{{post.slug}}" style="padding: 5px;"><span class="text-success">{{post.title}}</span></a></div>
+        {% endfor %}
+      </ul> 
+       

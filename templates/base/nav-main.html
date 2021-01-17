@@ -1,0 +1,601 @@
+<style>
+    .avatar {
+        height: 32px;
+        width: 32px;
+        background-color: #000;
+        border-radius: 50%;
+        display: inline-block;
+
+    }
+
+    .search-form input {
+        border: 1px solid #ccc;
+        height: calc(1.7em + .75rem + 1.7px);
+    }
+
+    .search-form input:focus {
+        border-color: #1497ff !important;
+        box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075), 0 0 0px rgba(255, 0, 0, 0.6);
+    }
+</style>
+<nav class="navbar navbar-light navbar-expand-md shadow-lg " style="background: #ffffff;">
+  <div class="container-fluid"><a class="navbar-brand" ="/">الد<span style="color: #3300ffe6;">كـ</span>تور</a><input type="search" class="shadow" style="background: #f0f2f5;width: 283px;height: 60px;border-radius: 24px;border-width: 0px;" /><button data-toggle="collapse"
+          data-target="#navcol-1" class="navbar-toggler"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navcol-1">
+          <ul class="nav navbar-nav p-0">
+              <li class="nav-item"><a class="nav-link active" ="/"><i class="fa fa-search" style="width: 0px;height: 0px;font-size: 22px;"></i><i class="fa fa-home" style="font-size: 34px;padding: 1px;padding-right: 26px;padding-bottom: 0px;padding-left: 32px;"></i><span style="font-size: 20px;"></span></a></li>
+              <li
+                  class="nav-item"><a class="nav-link active" ="/"><i class="fa fa-desktop" style="font-size: 34px;padding-left: 0px;padding-right: 24px;"></i><span style="font-size: 20px;"></span></a></li>
+                  <li class="nav-item"><a class="nav-link active" ="/"><i class="fas fa-users" style="font-size: 34px;padding-right: 28px;"></i><span style="font-size: 20px;"></span></a></li>
+                  <li class="nav-item"><a class="nav-link active" ="/"><i class="fas fa-layer-group" style="font-size: 34px;padding-right: 37px;padding-left: 1px;"></i><span style="font-size: 20px;"></span></a></li>
+                  <li class="nav-item"></li>
+          </ul>
+          {% if request.user.is_authenticated %}
+          <div class="dropdown"><a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle" ="/" style="padding-left: 0px;padding-right: 17px;"><img class="border rounded-circle" src="{% for data in avatar %}{{ data.avatar.url }}
+            {% endfor %}" style="width: 55px;height: 55px;" /><span style="color: #000000;font-size: 20px;">احمد</span></a>
+              <div
+                  class="dropdown-menu">
+                  <a class="dropdown-item" href="{% url "accounts:profile" %}">Dashboard</a>
+                  <a class="dropdown-item" href="{% url "accounts:edit" %}">Edit details</a>
+                  <a class="dropdown-item" href="{% url "accounts:favourite_list" %}">Saved Posts</a>
+                  <a class="dropdown-item" href="{% url "password_change" %}">Change Password</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="{% url "logout" %}">Logout</a>
+      </div>
+      <i class="fas fa-plus rounded-circle p-3" style="font-size: 20px;background: #e0e0e0"></i>
+      <i class="fas fa-sun" style="font-size: 34px;padding-right: 37px;padding-left: 1px;"> <i class="fas fa-moon"></i> </i>
+      {% else %}
+      <nav>
+          <a class="p-2 text-dark" href="{% url "accounts:register" %}">Register</a>
+          <a class="p-2 text-dark" href="{% url "login" %}">Login</a>
+      </nav>
+      {% endif %}
+    </div>
+</nav>
+  
+{% load post_tag %}
+
+{% latest_posts %}
+  
+<div class="col-md-12">
+  <div id="news-slider" class="owl-carousel">
+    <div class="post-slide">
+      <div class="post-img">
+        <img src="https://static.wixstatic.com/media/557f08_6d021ee6f64842a2a6f8bcad79cc1634~mv2.jpg/v1/fill/w_292,h_196,fp_0.50_0.50,q_90/557f08_6d021ee6f64842a2a6f8bcad79cc1634~mv2.webp" alt="">
+        <a ="/" class="over-layer"><i class="fa fa-link"></i></a>
+      </div>
+      <div class="post-content">
+        <h3 class="post-title">
+          <a ="/">Lorem ipsum dolor sit amet.</a>
+        </h3>
+        <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
+        <a ="/" class="read-more">read more</a>
+      </div>
+    </div>
+    
+    <div class="post-slide">
+      <div class="post-img">
+        <img src="https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=303&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=503" alt="">
+        <a ="/" class="over-layer"><i class="fa fa-link"></i></a>
+      </div>
+      <div class="post-content">
+        <h3 class="post-title">
+          <a ="/">Lorem ipsum dolor sit amet.</a>
+        </h3>
+        <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
+        <a ="/" class="read-more">read more</a>
+      </div>
+    </div>
+    
+    <div class="post-slide">
+      <div class="post-img">
+        <img src="https://static.wixstatic.com/media/557f08_927e8f723c0840db9085ed1107d8ab44~mv2.jpg/v1/fill/w_292,h_190,fp_0.50_0.50,q_90/557f08_927e8f723c0840db9085ed1107d8ab44~mv2.webp" alt="">
+        <a ="/" class="over-layer"><i class="fa fa-link"></i></a>
+      </div>
+      <div class="post-content">
+        <h3 class="post-title">
+          <a ="/">هنتكلم النهاردة عن الحروق و ازاى تتصرف بشكل صحيح فى حالة تعرضك او تعرض من حولك للاصابة بحرق. </a>
+        </h3>
+        <a ="/" class="read-more"><span class="badge badge-danger">صحة الطفل</span> <i class="fa fa-bookmark"></i> <i class="fa fa-heart"></i>2 <i class="fa fa-thumbs-down"></i>0 <i class="fa fa-thumbs-up "></i> 10  </a>
+      </div>
+    </div>
+    
+    <div class="post-slide">
+      <div class="post-img">
+        <img src="https://static.wixstatic.com/media/557f08_f5de2e7f5097478cabc24d3e86a60522~mv2.jpg/v1/fill/w_292,h_219,fp_0.50_0.50,q_90/557f08_f5de2e7f5097478cabc24d3e86a60522~mv2.webp" alt="">
+        <a ="/" class="over-layer"><i class="fa fa-link"></i></a>
+      </div>
+      <div class="post-content">
+        <h3 class="post-title">
+          <a ="/">د.أحمد الخطيب..مدرس مساعد طب الأطفال وحديثي الولادة.. قسم الجهاز الهضمي والكبد..من أفضل الأطباء </a>
+        </h3>
+        <a ="/" class="read-more"><span class="badge badge-danger">صحة الطفل</span><i class="fa fa-bookmark"></i> <i class="fa fa-heart"></i>2 <i class="fa fa-thumbs-down"></i>0 <i class="fa fa-thumbs-up "></i> 0  </a>
+      </div>
+    </div>
+    
+    <div class="post-slide">
+      <div class="post-img">
+        <img src="https://static.wixstatic.com/media/557f08_cce632cdb67249428787404acf27f04f~mv2.jpg/v1/fill/w_292,h_164,fp_0.50_0.50,q_90/557f08_cce632cdb67249428787404acf27f04f~mv2.webp" alt="">
+        <a ="/" class="over-layer"><i class="fa fa-link"></i></a>
+      </div>
+      <div class="post-content">
+        <h3 class="post-title">
+          <a ="/">الجديرى أو جدرى الماء.....مرض يحدث نتيجة عدوى فيروسية يسببها varicella-zoster virus</a>
+        </h3>
+        <a ="/" class="read-more"><span><span class="badge badge-danger">صحة الطفل</span></span> <i class="fa fa-bookmark"></i> <i class="fa fa-heart"></i>22 <i class="fa fa-thumbs-down"></i>11 <i class="fa fa-thumbs-up"></i> 0  </a>
+      </div>
+    </div>
+
+    <div class="post-slide">
+      <div class="post-img">
+        <img src="https://static.wixstatic.com/media/557f08_6d021ee6f64842a2a6f8bcad79cc1634~mv2.jpg/v1/fill/w_292,h_196,fp_0.50_0.50,q_90/557f08_6d021ee6f64842a2a6f8bcad79cc1634~mv2.webp" alt="">
+        <a ="/" class="over-layer"><i class="fa fa-link"></i></a>
+      </div>
+      <div class="post-content">
+        <h3 class="post-title">
+          <a ="/">الالتهاب السّحائي أو الحمّى الشّوكية.. 🤒</a>
+        </h3>
+        <a ="/" class="read-more"><span class="badge badge-danger">صحة الطفل</span> <i class="fa fa-bookmark"></i> <i class="fa fa-heart"></i>44 <i class="fa fa-thumbs-down"></i>1 <i class="fa fa-thumbs-up"></i> 0  </a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<style>
+  
+.card.shadow {
+    border-radius: 56px;
+}
+#news-slider{
+    margin-top: 80px;
+}
+.post-slide{
+    background: #fff;
+    margin: 20px 15px 20px;
+    border-radius: 15px;
+    padding-top: 1px;
+    box-shadow: 0px 14px 22px -9px #bbcbd8;
+}
+.post-slide .post-img{
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    margin: -12px 15px 8px 15px;
+    margin-left: -10px;
+}
+.post-slide .post-img img{
+    width: 100%;
+    height: auto;
+    transform: scale(1,1);
+    transition:transform 0.2s linear;
+}
+.post-slide:hover .post-img img{
+    transform: scale(1.1,1.1);
+}
+.post-slide .over-layer{
+    width:100%;
+    height:100%;
+    position: absolute;
+    top:0;
+    left:0;
+    opacity:0;
+    background: linear-gradient(-45deg, rgba(6,190,244,0.75) 0%, rgba(45,112,253,0.6) 100%);
+    transition:all 0.50s linear;
+}
+.post-slide:hover .over-layer{
+    opacity:1;
+    text-decoration:none;
+}
+.post-slide .over-layer i{
+    position: relative;
+    top:45%;
+    text-align:center;
+    display: block;
+    color:#fff;
+    font-size:25px;
+}
+.post-slide .post-content{
+    background:#fff;
+    padding: 2px 20px 40px;
+    border-radius: 15px;
+}
+.post-slide .post-title a{
+    font-size:15px;
+    font-weight:bold;
+    color:#333;
+    display: inline-block;
+    text-transform:uppercase;
+    transition: all 0.3s ease 0s;
+}
+.post-slide .post-title a:hover{
+    text-decoration: none;
+    color:#3498db;
+}
+.post-slide .post-description{
+    line-height:24px;
+    color:#808080;
+    margin-bottom:25px;
+}
+.post-slide .post-date{
+    color:#a9a9a9;
+    font-size: 14px;
+}
+.post-slide .post-date i{
+    font-size:20px;
+    margin-right:8px;
+    color: #CFDACE;
+}
+.read-more{
+    padding: 7px 20px;
+    float: right;
+    font-size: 12px;
+    background: #ffffff;
+    color: #000000;
+    box-shadow: 0px 10px 20px -10px #1376c5;
+    border-radius: 25px;
+    text-transform: uppercase;
+}
+.post-slide .read-more:hover{
+    background: #3498db;
+    text-decoration:none;
+    color:#fff;
+}
+.owl-controls .owl-buttons{
+    text-align:center;
+    margin-top:20px;
+}
+.owl-controls .owl-buttons .owl-prev{
+    background: #fff;
+    position: absolute;
+    top:-13%;
+    left:15px;
+    padding: 0 18px 0 15px;
+    border-radius: 50px;
+    box-shadow: 3px 14px 25px -10px #92b4d0;
+    transition: background 0.5s ease 0s;
+}
+.owl-controls .owl-buttons .owl-next{
+    background: #fff;
+    position: absolute;
+    top:-13%;
+    right: 15px;
+    padding: 0 15px 0 18px;
+    border-radius: 50px;
+    box-shadow: -3px 14px 25px -10px #92b4d0;
+    transition: background 0.5s ease 0s;
+}
+.owl-controls .owl-buttons .owl-prev:after,
+.owl-controls .owl-buttons .owl-next:after{
+    content:"\f104";
+    font-family: FontAwesome;
+    color: #333;
+    font-size:30px;
+}
+.owl-controls .owl-buttons .owl-next:after{
+    content:"\f105";
+}
+@media only screen and (max-width:1280px) {
+    .post-slide .post-content{
+        padding: 0px 15px 25px 15px;
+    }
+}
+</style>
+<script>
+  
+$(document).ready(function() {
+    $("#news-slider").owlCarousel({
+        items : 3,
+        itemsDesktop:[1199,3],
+        itemsDesktopSmall:[980,2],
+        itemsMobile : [600,1],
+        navigation:true,
+        navigationText:["",""],
+        pagination:true,
+        autoPlay:true
+    });
+});
+</script>
+<div class="story owl-carousel owl-theme">
+  <div class="story-item item" style="background-image:url(https://4.img-dpreview.com/files/p/E~TS590x0~articles/3925134721/0266554465.jpeg);"> 
+    <div class="rounded"></div>
+    <span>Your Content<span></div>
+  <div class="story-item item" style="background-image:url(https://cdn.pixabay.com/photo/2015/06/19/17/58/sample-815141_960_720.jpg);" >  
+    <div class="rounded"></div>
+    <span>Your Content<span></div>
+  <div class="story-item item" style="background-image:url(https://petapixel.com/assets/uploads/2012/02/sample1_mini.jpg);"> 
+     <div class="rounded"></div>
+    <span>Your Content<span> </div>
+  <div class="story-item item" style="background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR1uJ2UBA9SkxbosVbEjCTYo5FIBlVas-niv68Gfr3bam_EU_P);"> 
+     <div class="rounded"></div>
+    <span>Your Content<span> </div>
+  <div class="story-item item" style="background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEMIHqfMzKRiZed4BUNOKpPpTYLrDxC3hsiICottRQnNXHFaU3UA);" > 
+     <div class="rounded"></div>
+    <span>Your Content<span> </div>
+  <div class="story-item item" style="background-image:url(https://imaging.nikon.com/lineup/lens/f-mount/singlefocal/normal/af-s_50mmf_18g/img/sample/sample1_l.jpg);"> 
+     <div class="rounded"></div>
+    <span>Your Content<span> </div>
+  <div class="story-item item" style="background-image:url(https://dsim.in/blog/wp-content/uploads/2018/09/Image-3-e1537274947337.jpg);">  
+    <div class="rounded"></div>
+    <span>Your Content<span> </div>
+      </div>
+      <script>
+         $(document).ready(function(){
+  $('.story').owlCarousel({
+    center: false,
+    items:8, 
+    margin:10,
+    merge:true,
+    responsive:{
+        678:{
+            mergeFit:true
+        },
+        1000:{
+            mergeFit:false
+        }
+    }
+   
+});
+});
+
+
+      </script>
+
+      <style>
+        
+.story {
+	background:white;
+	padding:10px 5px;
+}
+.story .story-item {
+	height: 170px;
+    border-radius: 15px;
+    background: #3e7fff;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: white;
+	position:relative;
+	font-size:13px;	
+}  
+.story .story-item:before {
+   content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    opacity: .2;
+    border-radius: 15px;
+  } 
+.story .story-item span {
+	position:absolute;bottom:0;
+	padding:10px 5px; 
+  font-family: sans-serif;
+}
+.story .owl-stage {
+    right: 15px;
+}
+
+.rounded {
+  background-image:url(https://any.ge/assets/images/favicon-32x32.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  width:32px;
+  height:32px;
+  margin:5px;
+  position:absolute;
+  border-radius:50%;
+ border:2px solid #3877e1;
+}
+      </style>
+ 
+ <div class="row">
+   
+<div class="stories"> 
+   <ul>
+      <li>
+         <a ="/">
+            <div class="stories-card">
+               <div style="background-image:url(https://www.sayidy.net/sites/default/files/styles/1400x795/public/main/articles/dsm.jpg?itok=TFfH8qmA)" class="stories-img"></div>
+               <div class="add-storie">
+                  +
+               </div>
+               <div class="stories-by">
+                  <h5>كيف تتصرف إذا أفسدت نظام الريجيم بوجبة دسمة مليئة بالدهون؟     </h5>
+               </div>
+            </div>
+         </a>
+      </li>
+      <li>
+         <a ="/">
+            <div class="stories-card">
+               <div style="background-image:url(https://www.magltk.com/wp-content/uploads/2020/03/%D8%A3%D8%AE%D8%B7%D8%A7%D8%A1-%D8%AA%D8%A4%D8%AF%D9%8A-%D9%84%D8%A7%D9%86%D9%87%D9%8A%D8%A7%D8%B1-%D8%A3%D9%8A-%D8%B1%D9%8A%D8%AC%D9%8A%D9%85-%D9%83%D8%A7%D9%86.jpg)" class="stories-img"></div>
+               <div class="add-storie">
+                  +
+               </div>
+               <div class="stories-by">
+                  <h5>الريجيم الأفضل</h5>
+               </div>
+            </div>
+         </a>
+      </li>
+      <li>
+         <a ="/">
+            <div class="stories-card">
+               <div style="background-image:url(https://supraclinics.com/wp-content/uploads/2020/10/%D8%B1%D8%AC%D9%8A%D9%85-%D9%83%D9%84-%D9%8A%D9%88%D9%85-%D9%83%D9%8A%D9%84%D9%88-%D8%AA%D8%AC%D8%B1%D8%A8%D8%AA%D9%8A-780x470.png)" class="stories-img"></div>
+               <div class="add-storie">
+                  +
+               </div>
+               <div class="stories-by">
+                  <h5>رجيم كل يوم كيلو تجربتي</h5>
+               </div>
+            </div>
+         </a>
+      </li>
+      <li>
+         <a ="/">
+            <div class="stories-card">
+               <div style="background-image:url(https://static.webteb.net/images/uploads/healthreports/5-weight-loss-240-230.jpg)" class="stories-img"></div>
+               <div class="add-storie">
+                  <div style="background-image:url(https://static.webteb.net/images/uploads/healthreports/5-weight-loss-240-230.jpg)" class="avatar"></div>
+               </div>
+               <div class="stories-by">
+                  <h5>الريجيم وتخفيف الوزن</h5>
+               </div>
+            </div>
+         </a>
+      </li>
+      <li>
+         <a ="/">
+            <div class="stories-card">
+               <div style="background-image:url(https://supraclinics.com/wp-content/uploads/2021/01/Movicol-Drug-Uses-766x470.jpg)" class="stories-img"></div>
+               <div class="add-storie">
+                  <div style="background-image:url(https://supraclinics.com/wp-content/uploads/2021/01/Movicol-Drug-Uses-766x470.jpg)" class="avatar"></div>
+               </div>
+               <div class="stories-by">
+                  <h5>أفضل 24 طريقة يمكنها طرد الأفكار السلبية في دقائق </h5>
+               </div>
+            </div>
+         </a>
+      </li>
+      <li>
+         <a ="/">
+            <div class="stories-card">
+               <div style="background-image:url(https://ostatic.echoroukonline.com/files/2014/rijim_727573515.jpg)" class="stories-img"></div>
+               <div class="add-storie">
+                  <div style="background-image:url(https://ostatic.echoroukonline.com/files/2014/rijim_727573515.jpg)" class="avatar"></div>
+               </div>
+               <div class="stories-by">
+                  <h5>المرأة وهوس الريجيم بأقلام ساخرة! </h5>
+               </div>
+            </div>
+         </a>
+      </li> 
+      <li>
+         <a ="/">
+            <div class="stories-card">
+               <div style="background-image:url(https://www.annajah.net/resources/thumbs/article_photos/LDKKaBY3kG-Annajah.jpg_730x410.jpg)" class="stories-img"></div>
+               <div class="add-storie">
+                  <div style="background-image:url(https://www.annajah.net/resources/thumbs/article_photos/LDKKaBY3kG-Annajah.jpg_730x410.jpg)" class="avatar"></div>
+               </div>
+               <div class="stories-by">
+                  <h5>نصائح للتخلّص من السمنة</h5>
+               </div>
+            </div>
+         </a>
+      </li> 
+      <li>
+         <a ="/">
+            <div class="stories-card">
+               <div style="background-image:url(https://rjeem.com/wp-content/uploads/2016/06/0000000-2.jpg)" class="stories-img"></div>
+               <div class="add-storie">
+                  <div style="background-image:url(https://rjeem.com/wp-content/uploads/2016/06/0000000-2.jpg)" class="avatar"></div>
+               </div>
+               <div class="stories-by">
+                  <h5>3 نصائح لعلاج السمنه المفرطة </h5>
+               </div>
+            </div>
+         </a>
+      </li> 
+      <li>
+         <a ="/">
+            <div class="stories-card">
+               <div style="background-image:url(https://static.hellooha.com/uploads/thumbs/articles/big/epxanordoie82_article.jpg)" class="stories-img"></div>
+               <div class="add-storie">
+                  <div style="background-image:url(https://static.hellooha.com/uploads/thumbs/articles/big/epxanordoie82_article.jpg)" class="avatar"></div>
+               </div>
+               <div class="stories-by">
+                  <h5>السمنة عند الأطفال وعلاجها</h5>
+               </div>
+            </div>
+         </a>
+      </li> 
+   </ul>
+</div>
+ </div>
+
+<style>
+  
+.stories .head {
+  margin-bottom:20px;
+}
+.stories h4 {
+  color:#4e5156;
+  display: contents;
+}
+
+.stories a {
+  float:right;
+  font-weight:400;
+  color:#1976f3;
+  text-decoration:none;
+}
+.stories ul {
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+
+.stories ul li {
+  float:left;
+  margin-right:10px;
+}
+.stories ul li:last-child {
+  margin-right:0px;
+}
+.stories .stories-card {
+  width:130px;
+  height:220px;
+  position:relative;
+  overflow:hidden;
+  border-radius:10px;
+  box-shadow:0 3px 6px rgba(50, 50, 93, 0.1);
+}
+.stories .stories-card .stories-img {
+  width:100%;
+  height:100%;
+  background-size:cover;
+  background-position:center;
+}
+.stories .stories-card .stories-by {
+  position:absolute;
+  bottom:0;
+  color:#fff;
+  background:linear-gradient(to bottom, transparent 0, #000000db 99%, #000000eb 100%);
+  padding:13px 15px;
+  font-size:18px;
+  line-height:25px; 
+}
+.stories .stories-card .stories-by h5 {
+  margin:0;
+  font-weight:300;
+}
+.stories .stories-card .add-storie {
+  position:absolute;
+  top:0;
+  width:32px;
+  height:32px;
+  text-align:center;
+  line-height:32px;
+  margin:15px;
+  background:#0000004a;
+  color:#fff;
+  border:2px solid #fff;
+  border-radius:50px;
+  overflow:hidden;
+  background-size:cover;
+  background-position:center;
+}
+.stories .stories-card .add-storie .avatar {
+  width:100%;
+  height:100%;
+  background-size:cover;
+  background-position:center;
+} 
+.owl-stage-outer{
+   direction: ltr;
+}
+</style>

@@ -1,0 +1,8 @@
+
+    <ul class="nav nav-tabs shadow-lg">
+    {% for post in l_posts %}  
+    <li class="nav-item" style="width: 34px;"><a class="nav-link " href="/category/{{post.slug}}"><img class="shadow-lg rounded-circle p-1 " src="{{post.image.url}}" style="width: 34px;box-shadow: 0px 0px 17px rgb(33,70,111);height: 34px;" /></a></li>
+    {% endfor %}
+
+  
+</ul>
